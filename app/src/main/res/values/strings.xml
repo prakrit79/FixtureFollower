@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FixtureFollower2.0</string>
+    <string name="title_activity_maps">Map</string>
+    <string-array name="matchdays">
+        <item>Matchday 1</item>
+        <item>Matchday 2</item>
+        <item>Matchday 3</item>
+        <item>Matchday 4</item>
+        <item>Matchday 5</item>
+    </string-array>
+</resources>
