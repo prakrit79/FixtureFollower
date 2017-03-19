@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +29,7 @@ public class Parser extends AppCompatActivity{
     public Parser() {
     }
 
-    public void Parse(int thisID) {
+    public void Parse(int thisID, final LatLng latlng) {
 
         final RequestQueue requestQueue = Volley.newRequestQueue(Parser.this);
         String teamid = Integer.toString(thisID);
@@ -44,7 +45,7 @@ public class Parser extends AppCompatActivity{
                             //System.out.println(responseObject);
                             //System.out.println(responseObject instanceof JSONObject);
                             Parser p = new Parser();
-                            p.ParseHelper(responseObject);
+                            p.ParseHelper(responseObject, latlng);
                         }
                         catch(JSONException e){
                             throw new RuntimeException(e);
@@ -77,7 +78,7 @@ public class Parser extends AppCompatActivity{
         requestQueue.add(stringRequest);
     }
 
-    public void ParseHelper(JSONObject thisObject){
+    public void ParseHelper(JSONObject thisObject, LatLng latLng){
 
         //System.out.println(thisObject);
         try {
@@ -88,14 +89,9 @@ public class Parser extends AppCompatActivity{
                 JSONObject obj = fixtures.getJSONObject(i);
                 String hometeamName = obj.get("homeTeamName").toString();
                 String awayteamName = obj.get("awayTeamName").toString();
+                String matchday = obj.get("matchday").toString();
                 String date = obj.get("date").toString();
-
-
-                System.out.print(hometeamName);
-                System.out.print(awayteamName);
-                System.out.print(date);
-
-                //System.out.print(hometeamName);
+                Fixture fixture = new Fixture(hometeamName,awayteamName,latLng,date,matchday);
             }
 
         } catch (JSONException e) {

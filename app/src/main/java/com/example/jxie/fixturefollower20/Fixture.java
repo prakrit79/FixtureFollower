@@ -1,4 +1,6 @@
-package com.example.jason.fixture20;
+package com.example.jxie.fixturefollower20;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -9,18 +11,15 @@ import java.util.ArrayList;
 public class Fixture {
     String homeTeamName;
     String awayTeamName;
-    double lat;
-    double lon;
+    LatLng latlng;
     String date;
-    int matchday;
+    String matchday;
 
-    public Fixture(String htm, String atm, double lat, double lon, String date, int matchday) {
+    public Fixture(String htm, String atm, LatLng latlng , String date, String matchday) {
         this.homeTeamName = htm;
         this.awayTeamName = atm;
-        this.lat = lat;
-        this.lon = lon;
+        this.latlng = latlng;
         this.date = date;
         this.matchday = matchday;
-
     }
 }
