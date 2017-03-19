@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="255f6682104cc679e63dece3a2dabdf8d77def7d">
+        <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3c08114a72a7ae7cd3cc3cc7bae5895c6274b303/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_571d70123aa4cfcdef0fbbdff31dda71d986e302/classes.dex" />
+    </item>
+
+</items>

@@ -26,12 +26,12 @@ public class HomeActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hSpinner.setAdapter(adapter);
 
-//        hSpinner.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                selection = hSpinner.getSelectedItem().toString();
-//
-//            }
-//        });
+        hSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selection = hSpinner.getSelectedItem().toString();
+
+            }
+        });
     }
 }

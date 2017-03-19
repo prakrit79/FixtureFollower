@@ -36,6 +36,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.matchdays, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
+
+        mSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selection = mSpinner.getSelectedItem().toString();
+
+            }
+        });
     }
 
 
