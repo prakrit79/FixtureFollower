@@ -3,21 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="255f6682104cc679e63dece3a2dabdf8d77def7d">
-        <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3c08114a72a7ae7cd3cc3cc7bae5895c6274b303/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_571d70123aa4cfcdef0fbbdff31dda71d986e302/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ba8fac2c31f45ca2f2ca15c8679c867c5c01faff">
+        <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3c08114a72a7ae7cd3cc3cc7bae5895c6274b303/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jxie/.android/build-cache/814f2cc4a15e98155ce3912c75a3ce569cdb76b1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/jxie/Desktop/FixtureFollower/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a4e9ca0466bab6ca5306e7b0e3e32c0f15411e35/classes.dex" />
     </item>
 
 </items>

@@ -20,7 +20,104 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private Spinner mSpinner;
 
-    private String selection;
+    Parser parser;
+
+    String location = HomeActivity.selection;
+
+    LatLng chelsea = new LatLng(51.4816, -0.191034);
+    LatLng bournemouth = new LatLng(50.7352, -1.83839);
+    LatLng arsenal = new LatLng(51.5549, -0.108436);
+    LatLng cp = new LatLng(51.3983, -0.085455);
+    LatLng everton = new LatLng(53.4387, -2.96619);
+    LatLng leiceister = new LatLng(52.6203, -1.14217);
+    LatLng liverpool = new LatLng(53.4308, -2.96096);
+    LatLng mancity = new LatLng(53.483, -2.20024);
+    LatLng manu = new LatLng(53.4631, -2.29139);
+    LatLng south = new LatLng(50.9058, -1.39114);
+    LatLng stoke = new LatLng(52.9884, -2.17542);
+    LatLng sunder = new LatLng(54.9146, -1.38837);
+    LatLng swansea = new LatLng(51.6428, -3.93473);
+    LatLng tottenham = new LatLng(50.7352, -1.83839);
+    LatLng watford = new LatLng(51.6498, -0.401569);
+    LatLng westbrom = new LatLng(52.509, -1.96418);
+    LatLng westham = new LatLng(51.5383, -0.016587);
+    
+
+    
+    public LatLng getLocation(String selectedItem){
+        LatLng cur = null;
+        if(selectedItem.equals("Arsenal FC"))
+        {
+            cur = arsenal;
+        }
+        if(selectedItem.equals("AFC Bournemouth"))
+        {
+            cur = bournemouth;
+        }
+
+        if(selectedItem.equals("Chelsea FC"))
+        {
+            cur = chelsea;
+        }
+
+        if(selectedItem.equals("Crystal Palace"))
+        {
+            cur = cp;
+        }
+        if(selectedItem.equals("Everton FC"))
+        {
+            cur = everton;
+        }
+        if(selectedItem.equals("Leicester City"))
+        {
+            cur = leiceister;
+        }
+        if(selectedItem.equals("Liverpool FC"))
+        {
+            cur = liverpool;
+        }
+        if(selectedItem.equals("Manchester City"))
+        {
+            cur = mancity;
+        }
+        if(selectedItem.equals("Manchester United"))
+        {
+            cur = manu;
+        }
+        if(selectedItem.equals("Southampton FC"))
+        {
+            cur = south;
+        }
+        if(selectedItem.equals("Stoke City"))
+        {
+            cur = stoke;
+        }
+        if(selectedItem.equals("Sunderland AFC"))
+        {
+            cur = sunder;
+        }
+        if(selectedItem.equals("Swansea City"))
+        {
+            cur = swansea;
+        }
+        if(selectedItem.equals("Tottenham Hotspur"))
+        {
+            cur = tottenham;
+        }
+        if(selectedItem.equals("Watford FC"))
+        {
+            cur = watford;
+        }
+        if(selectedItem.equals("West Bromwich Albion"))
+        {
+            cur = westbrom;
+        }
+        if(selectedItem.equals("West Ham United"))
+        {
+            cur = westham;
+        }
+        return cur; 
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +134,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
 
-        mSpinner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selection = mSpinner.getSelectedItem().toString();
-
-            }
-        });
+//        mSpinner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                selection = mSpinner.getSelectedItem().toString();
+//
+//            }
+//        });
     }
 
-
-    public void onClick(View v){
-        selection = mSpinner.getSelectedItem().toString();
-    }
-
+//
+//    public void onClick(View v){
+//        selection = mSpinner.getSelectedItem().toString();
+//    }
+//
 
     /**
      * Manipulates the map once available.
@@ -64,11 +161,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        LatLng current = getLocation(location);
         // Add a marker in Sydney and move the camera
-        LatLng london = new LatLng(51.4816, -0.191034);
-        mMap.addMarker(new MarkerOptions().position(london).title("Marker in Chelsea"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(london));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(london,6));
+        mMap.addMarker(new MarkerOptions().position(current).title(location.toString()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
     }
 }

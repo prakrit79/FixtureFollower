@@ -10,21 +10,15 @@
         android:id="@+id/spinner2"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
         android:background="@color/colorAccent"
         android:dropDownWidth="match_parent"
         android:entries="@color/colorAccent"
+        android:popupBackground="@color/colorPrimary"
         android:spinnerMode="dropdown"
         android:visibility="visible"
-        tools:layout_editor_absoluteY="442dp"
-        tools:layout_editor_absoluteX="8dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="395dp"
-        android:layout_height="426dp"
-        android:text="Fixture Follower"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="3dp"
+        android:layout_marginEnd="16dp" />
 
 </android.support.constraint.ConstraintLayout>

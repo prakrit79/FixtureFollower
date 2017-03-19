@@ -1,28 +1,28 @@
 package com.example.jxie.fixturefollower20;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import static com.example.jxie.fixturefollower20.R.id.spinner;
+
 
 public class HomeActivity extends AppCompatActivity {
-    //Add line
-    //You should see this line now dskjndfkjladsklsjdfsklja
-    //sadfasdfasdfsd
-    private Spinner hSpinner;
 
-    private String selection;
+    public Spinner hSpinner;
+    public int id = 0;
+    public static String selection;
 
-    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        final Parser parser = new Parser();
 
         hSpinner = (Spinner) findViewById(R.id.spinner2);
         hSpinner.setEnabled(true);
@@ -30,57 +30,114 @@ public class HomeActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hSpinner.setAdapter(adapter);
 
-        switch(selection) {
-            case "AFC Bournemouth":
-                id = 58;
-            case "Arsenal FC":
-                id = 563;
-//            case "Burnley FC":
-//                id = ;
-            case "Chelsea FC":
-                id = 72;
-            case "Crystal Palace":
-                id = 61;
-            case "Everton FC":
-                id  = 346;
-//            case "Hull City ":
-//                id  = ;
-            case "Leicester City":
-                id  = 71;
-            case "Liverpool FC":
-                id  = 74;
-            case "Manchester City":
-                id  = 65;
-            case "Manchester United":
-                id  = 73;
-//            case "Middlesborough FC":
-//                id  = ;
-            case "Southampton FC":
-                id  = 57;
-            case "Stoke City":
-                id  = 64;
-            case "Sunderland AFC":
-                id  = 68;
-            case "Swansea City":
-                id  = 67;
-            case "Totenham Hotspur":
-                id  = 1044;
-            case "Watford FC":
-                id  = 338;
-            case "West Bromwich Albion":
-                id  = 65;
-            case "West Ham United":
-                id  = 70;
 
-        }
+        hSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long cid)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                selection = selectedItem;
+                final Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                id = 0;
 
-        hSpinner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selection = hSpinner.getSelectedItem().toString();
-                parser.Parse(id);
+                if(selectedItem.equals("Arsenal FC"))
+                {
+                    id = 563;
+                    System.out.print(id);
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("AFC Bournemouth"))
+                {
+                    id = 58;
+                    System.out.print(id);
+                    startActivity(intent);
+                }
+
+                if(selectedItem.equals("Chelsea FC"))
+                {
+                    id = 72;
+                    System.out.print(id);
+                    startActivity(intent);
+                }
+
+                if(selectedItem.equals("Crystal Palace"))
+                {
+                    id = 61;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Everton FC"))
+                {
+                    id = 346;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Leicester City"))
+                {
+                    id = 71;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Liverpool FC"))
+                {
+                    id = 74;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Manchester City"))
+                {
+                    id = 65;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Manchester United"))
+                {
+                    id = 73;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Southampton FC"))
+                {
+                    id = 57;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Stoke City"))
+                {
+                    id = 64;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Sunderland AFC"))
+                {
+                    id = 68;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Swansea City"))
+                {
+                    id = 67;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Tottenham Hotspur"))
+                {
+                    id = 1044;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("Watford FC"))
+                {
+                    id = 338;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("West Bromwich Albion"))
+                {
+                    id = 65;
+                    startActivity(intent);
+                }
+                if(selectedItem.equals("West Ham United"))
+                {
+                    id = 70;
+                    startActivity(intent);
+                }
+
+            } // to close the onItemSelected
+            public void onNothingSelected(AdapterView<?> parent)
+            {
 
             }
         });
+
     }
+
 }
