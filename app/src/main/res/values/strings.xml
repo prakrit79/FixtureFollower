@@ -1,11 +1,41 @@
 <resources>
     <string name="app_name">FixtureFollower2.0</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="teams">
+        <item>AFC Bournemouth</item>
+        <item>Arsenel FC</item>
+        <item>Burnley FC</item>
+        <item>Chelsea FC</item>
+        <item>Crystal Palace</item>
+        <item>Everton FC</item>
+        <item>Hull City</item>
+        <item>Leicester City FC</item>
+        <item>Liverpool FC</item>
+        <item>Manchester City</item>
+        <item>Manchester United</item>
+        <item>Middlesborough FC</item>
+        <item>Southampton FC</item>
+        <item>Stoke City</item>
+        <item>Sunderland AFC</item>
+        <item>Swansea City</item>
+        <item>Sunderland AFC</item>
+        <item>Swansea City</item>
+        <item>Tottenham Hotspur</item>
+        <item>Watford FC</item>
+        <item>West Bromwich Albion</item>
+    </string-array>
+
     <string-array name="matchdays">
         <item>Matchday 1</item>
         <item>Matchday 2</item>
         <item>Matchday 3</item>
         <item>Matchday 4</item>
         <item>Matchday 5</item>
+        <item>Matchday 6</item>
+        <item>Matchday 7</item>
+        <item>Matchday 8</item>
+        <item>Matchday 9</item>
+        <item>Matchday 10</item>
     </string-array>
 </resources>

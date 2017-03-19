@@ -8,17 +8,23 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="368dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:spinnerMode="dialog"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="326dp" />
+        android:background="@color/colorAccent"
+        android:dropDownWidth="match_parent"
+        android:entries="@color/colorAccent"
+        android:spinnerMode="dropdown"
+        android:visibility="visible"
+        tools:layout_editor_absoluteY="442dp"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="395dp"
+        android:layout_height="426dp"
         android:text="Fixture Follower"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="69dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
+
 </android.support.constraint.ConstraintLayout>
