@@ -15,13 +15,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private String selection;
 
+    private int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Parser parse = new Parser();
-        String id;
+        final Parser parser = new Parser();
 
         hSpinner = (Spinner) findViewById(R.id.spinner2);
         hSpinner.setEnabled(true);
@@ -31,45 +32,45 @@ public class HomeActivity extends AppCompatActivity {
 
         switch(selection) {
             case "AFC Bournemouth":
-                id = "58";
+                id = 58;
             case "Arsenal FC":
-                id = "563";
+                id = 563;
 //            case "Burnley FC":
 //                id = ;
             case "Chelsea FC":
-                id = "72";
+                id = 72;
             case "Crystal Palace":
-                id = "61";
+                id = 61;
             case "Everton FC":
-                id  = "346";
+                id  = 346;
 //            case "Hull City ":
 //                id  = ;
             case "Leicester City":
-                id  = "71";
+                id  = 71;
             case "Liverpool FC":
-                id  = "74";
+                id  = 74;
             case "Manchester City":
-                id  = "65";
+                id  = 65;
             case "Manchester United":
-                id  = "73";
+                id  = 73;
 //            case "Middlesborough FC":
 //                id  = ;
             case "Southampton FC":
-                id  = "57";
+                id  = 57;
             case "Stoke City":
-                id  = "64";
+                id  = 64;
             case "Sunderland AFC":
-                id  = "68";
+                id  = 68;
             case "Swansea City":
-                id  = "67";
+                id  = 67;
             case "Totenham Hotspur":
-                id  = "1044";
+                id  = 1044;
             case "Watford FC":
-                id  = "338";
+                id  = 338;
             case "West Bromwich Albion":
-                id  = "65";
+                id  = 65;
             case "West Ham United":
-                id  = "70";
+                id  = 70;
 
         }
 
@@ -77,6 +78,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 selection = hSpinner.getSelectedItem().toString();
+                parser.Parse(id);
 
             }
         });
