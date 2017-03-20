@@ -15,7 +15,7 @@ import static com.example.jxie.fixturefollower20.R.id.spinner;
 public class HomeActivity extends AppCompatActivity {
 
     public Spinner hSpinner;
-    public int id = 0;
+    public static int id = 0;
     public static String selection;
 
 

@@ -23,6 +23,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Parser parser;
 
     String location = HomeActivity.selection;
+    int tid = HomeActivity.id;
 
     LatLng chelsea = new LatLng(51.4816, -0.191034);
     LatLng bournemouth = new LatLng(50.7352, -1.83839);
