@@ -20,6 +20,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private Spinner mSpinner;
 
+    int id = HomeActivity.id;
+
     Parser parser;
 
     String location = HomeActivity.selection;
@@ -162,6 +164,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng current = getLocation(location);
+        parser.Parse(id,current);
         // Add a marker in Sydney and move the camera
         mMap.addMarker(new MarkerOptions().position(current).title(location.toString()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
