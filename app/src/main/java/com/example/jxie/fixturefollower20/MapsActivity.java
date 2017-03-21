@@ -76,6 +76,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         cities.put("AFC Bournemouth",bournemouth);
         cities.put("Chelsea FC",chelsea);
         cities.put("Crystal Palace FC",cp);
+        cities.put("Everton FC", everton);
         cities.put("Leicester City FC",leiceister);
         cities.put("Liverpool FC",liverpool);
         cities.put("Manchester City",mancity);
@@ -113,7 +114,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     System.out.print(fixture.homeTeamName);
                     LatLng pos = cities.get(fixture.homeTeamName);
                     System.out.println(pos);
-                    mMap.addMarker(new MarkerOptions().position(pos).title(fixture.homeTeamName + " VS " + fixture.awayTeamName));
+                    mMap.addMarker(new MarkerOptions().position(pos).title(fixture.homeTeamName + " VS " + fixture.awayTeamName)
+                            .snippet("Matchday: " + fixture.matchday));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(club_location));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(club_location,6));
                 }

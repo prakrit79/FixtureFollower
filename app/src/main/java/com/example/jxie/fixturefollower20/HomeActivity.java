@@ -42,42 +42,42 @@ public class HomeActivity extends AppCompatActivity {
 
                 if(selectedItem.equals("Arsenal FC"))
                 {
-                    id = 563;
+                    id = 57;
                     System.out.print(id);
                     startActivity(intent);
                 }
                 if(selectedItem.equals("AFC Bournemouth"))
                 {
-                    id = 58;
+                    id = 1044;
                     System.out.print(id);
                     startActivity(intent);
                 }
 
                 if(selectedItem.equals("Chelsea FC"))
                 {
-                    id = 72;
+                    id = 61;
                     System.out.print(id);
                     startActivity(intent);
                 }
 
                 if(selectedItem.equals("Crystal Palace"))
                 {
-                    id = 61;
+                    id = 354;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Everton FC"))
                 {
-                    id = 346;
+                    id = 62;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Leicester City"))
                 {
-                    id = 71;
+                    id = 338;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Liverpool FC"))
                 {
-                    id = 74;
+                    id = 64;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Manchester City"))
@@ -87,47 +87,47 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 if(selectedItem.equals("Manchester United"))
                 {
-                    id = 73;
+                    id = 66;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Southampton FC"))
                 {
-                    id = 57;
+                    id = 340;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Stoke City"))
                 {
-                    id = 64;
+                    id = 70;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Sunderland AFC"))
                 {
-                    id = 68;
+                    id = 71;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Swansea City"))
                 {
-                    id = 67;
+                    id = 72;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Tottenham Hotspur"))
                 {
-                    id = 1044;
+                    id = 73;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("Watford FC"))
                 {
-                    id = 338;
+                    id = 346;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("West Bromwich Albion"))
                 {
-                    id = 65;
+                    id = 74;
                     startActivity(intent);
                 }
                 if(selectedItem.equals("West Ham United"))
                 {
-                    id = 70;
+                    id = 563;
                     startActivity(intent);
                 }
 
