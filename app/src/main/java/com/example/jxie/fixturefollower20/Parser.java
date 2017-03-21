@@ -37,7 +37,7 @@ public class Parser extends AppCompatActivity {
     public Parser() {
     }
 
-    public void Parse(int thisID, final LatLng latlng, final CallBack callback) {
+    public void Parse(int thisID, final CallBack callback) {
         final RequestQueue requestQueue = Volley.newRequestQueue(AppController.getInstance());
         String teamid = Integer.toString(thisID);
 
@@ -50,7 +50,7 @@ public class Parser extends AppCompatActivity {
                         System.out.println(response);
                         try {
                             JSONObject responseObject = new JSONObject(response);
-                            fixtures = ParseHelper(responseObject, latlng);
+                            fixtures = ParseHelper(responseObject);
                             callback.OnSuccess(fixtures);
                         }
                         catch(JSONException e){
@@ -85,7 +85,7 @@ public class Parser extends AppCompatActivity {
 
 
 
-    public ArrayList<Fixture> ParseHelper(JSONObject thisObject, LatLng latLng){
+    public ArrayList<Fixture> ParseHelper(JSONObject thisObject){
         ArrayList<Fixture> matches = new ArrayList<>();
         try {
             JSONArray fixtures = (JSONArray) thisObject.get("fixtures");
@@ -101,7 +101,7 @@ public class Parser extends AppCompatActivity {
 //                System.out.println(awayteamName);
 //                System.out.println(matchday);
 //                System.out.println(date);
-                Fixture fixture = new Fixture(hometeamName,awayteamName,latLng,date,matchday);
+                Fixture fixture = new Fixture(hometeamName,awayteamName,date,matchday);
                 System.out.println(fixture);
                 matches.add(fixture);
             }

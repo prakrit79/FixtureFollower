@@ -7,21 +7,21 @@
         <item>Arsenal FC</item>
         <item>AFC Bournemouth</item>
         <item>Chelsea FC</item>
-        <item>Crystal Palace</item>
+        <item>Crystal Palace FC</item>
         <item>Everton FC</item>
-        <item>Leicester City</item>
+        <item>Leicester City FC</item>
         <item>Liverpool FC</item>
-        <item>Manchester City</item>
-        <item>Manchester United</item>
+        <item>Manchester City FC</item>
+        <item>Manchester United FC</item>
         <item>Southampton FC</item>
-        <item>Stoke City</item>
+        <item>Stoke City FC</item>
         <item>Sunderland AFC</item>
-        <item>Swansea City</item>
+        <item>Swansea City FC</item>
         <item>Sunderland AFC</item>
-        <item>Swansea City</item>
-        <item>Tottenham Hotspur</item>
+        <item>Swansea City FC</item>
+        <item>Tottenham Hotspur FC</item>
         <item>Watford FC</item>
-        <item>West Bromwich Albion</item>
+        <item>West Bromwich Albion FC</item>
     </string-array>
 
     <string-array name="matchdays">

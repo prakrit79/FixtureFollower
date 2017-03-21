@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -26,9 +28,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     Parser parser = new Parser();
 
-    String location = HomeActivity.selection;
+    String selection = HomeActivity.selection;
 
-    LatLng current = null;
+    LatLng club_location = null;
+
+    Map<String, LatLng> cities = new HashMap<>();
 
     LatLng chelsea = new LatLng(51.4816, -0.191034);
     LatLng bournemouth = new LatLng(50.7352, -1.83839);
@@ -48,91 +52,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     LatLng westbrom = new LatLng(52.509, -1.96418);
     LatLng westham = new LatLng(51.5383, -0.016587);
 
-    public LatLng getLocation(String selectedItem){
-        LatLng cur = null;
-        if(selectedItem.equals("Arsenal FC"))
-        {
-            cur = arsenal;
-        }
-        if(selectedItem.equals("AFC Bournemouth"))
-        {
-            cur = bournemouth;
-        }
-
-        if(selectedItem.equals("Chelsea FC"))
-        {
-            cur = chelsea;
-        }
-
-        if(selectedItem.equals("Crystal Palace"))
-        {
-            cur = cp;
-        }
-        if(selectedItem.equals("Everton FC"))
-        {
-            cur = everton;
-        }
-        if(selectedItem.equals("Leicester City"))
-        {
-            cur = leiceister;
-        }
-        if(selectedItem.equals("Liverpool FC"))
-        {
-            cur = liverpool;
-        }
-        if(selectedItem.equals("Manchester City"))
-        {
-            cur = mancity;
-        }
-        if(selectedItem.equals("Manchester United"))
-        {
-            cur = manu;
-        }
-        if(selectedItem.equals("Southampton FC"))
-        {
-            cur = south;
-        }
-        if(selectedItem.equals("Stoke City"))
-        {
-            cur = stoke;
-        }
-        if(selectedItem.equals("Sunderland AFC"))
-        {
-            cur = sunder;
-        }
-        if(selectedItem.equals("Swansea City"))
-        {
-            cur = swansea;
-        }
-        if(selectedItem.equals("Tottenham Hotspur"))
-        {
-            cur = tottenham;
-        }
-        if(selectedItem.equals("Watford FC"))
-        {
-            cur = watford;
-        }
-        if(selectedItem.equals("West Bromwich Albion"))
-        {
-            cur = westbrom;
-        }
-        if(selectedItem.equals("West Ham United"))
-        {
-            cur = westham;
-        }
-        return cur;
-    }
-    
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        current = getLocation(location);
+        intializelocations();
+        club_location = cities.get(selection);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mSpinner = (Spinner)findViewById(R.id.spinner);
         mSpinner.setEnabled(true);
@@ -142,11 +71,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-//
-//    public void onClick(View v){
-//        selection = mSpinner.getSelectedItem().toString();
-//    }
-//
+    private void intializelocations() {
+        cities.put("Arsenal FC",arsenal);
+        cities.put("AFC Bournemouth",bournemouth);
+        cities.put("Chelsea FC",chelsea);
+        cities.put("Crystal Palace FC",cp);
+        cities.put("Leicester City FC",leiceister);
+        cities.put("Liverpool FC",liverpool);
+        cities.put("Manchester City",mancity);
+        cities.put("Manchester United FC",manu);
+        cities.put("Southampton FC",south);
+        cities.put("Stoke City FC",stoke);
+        cities.put("Sunderland AFC",sunder);
+        cities.put("Swansea City FC",swansea);
+        cities.put("Tottenham Hotspur FC",tottenham);
+        cities.put("Watford FC",watford);
+        cities.put("West Bromwich Albion FC",westbrom);
+        cities.put("West Ham United FC",westham);
+    }
+
 
     /**
      * Manipulates the map once available.
@@ -161,19 +104,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-//        mMap.addMarker(new MarkerOptions().position(current).title(location));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
-//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
-        parser.Parse(id, current, new CallBack() {
+        parser.Parse(id, new CallBack() {
             @Override
             public void OnSuccess(ArrayList<Fixture> fixtures) {
                 System.out.println("success!!");
                 System.out.println(fixtures);
                 for(Fixture fixture: fixtures ){
-                    mMap.addMarker(new MarkerOptions().position(fixture.latlng).title(fixture.homeTeamName + fixture.awayTeamName));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
+                    System.out.print(fixture.homeTeamName);
+                    LatLng pos = cities.get(fixture.homeTeamName);
+                    System.out.println(pos);
+                    mMap.addMarker(new MarkerOptions().position(pos).title(fixture.homeTeamName + " VS " + fixture.awayTeamName));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(club_location));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(club_location,6));
                 }
             }
             @Override
