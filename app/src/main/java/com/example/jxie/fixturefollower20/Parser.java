@@ -1,6 +1,8 @@
 package com.example.jxie.fixturefollower20;
 
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
+import android.widget.Spinner;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -10,7 +12,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,40 +31,38 @@ import java.util.Map;
  * Created by jason on 3/18/2017.
  */
 
-public class Parser extends AppCompatActivity{
+public class Parser extends AppCompatActivity {
+
 
     public Parser() {
     }
 
-    public void Parse(int thisID, final LatLng latlng) {
-
-        final RequestQueue requestQueue = Volley.newRequestQueue(Parser.this);
+    public void Parse(int thisID, final LatLng latlng, final CallBack callback) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(AppController.getInstance());
         String teamid = Integer.toString(thisID);
-        final ArrayList<Fixture> matches = new ArrayList<>();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://api.football-data.org/v1/teams/" + teamid + "/fixtures?timeFrame=n7",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://api.football-data.org/v1/teams/" + teamid + "/fixtures?timeFrame=n21",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<Fixture> innerMatches = new ArrayList<>();
+                        ArrayList<Fixture> fixtures;
                         System.out.println("this is Response!!");
-                        //System.out.println(response);
+                        System.out.println(response);
                         try {
                             JSONObject responseObject = new JSONObject(response);
-                            Parser p = new Parser();
-                            p.ParseHelper(responseObject, latlng);
+                            fixtures = ParseHelper(responseObject, latlng);
+                            callback.OnSuccess(fixtures);
                         }
                         catch(JSONException e){
-                            throw new RuntimeException(e);
+                            e.printStackTrace();
+                            callback.OnFail(e.toString());
                         }
-
                         requestQueue.stop();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         System.out.println("this is Error!!");
                         System.out.println(error);
                         requestQueue.stop();
@@ -79,14 +83,13 @@ public class Parser extends AppCompatActivity{
         requestQueue.add(stringRequest);
     }
 
-    public ArrayList<Fixture> ParseHelper(JSONObject thisObject, LatLng latLng){
 
-        //System.out.println(thisObject);
+
+    public ArrayList<Fixture> ParseHelper(JSONObject thisObject, LatLng latLng){
+        ArrayList<Fixture> matches = new ArrayList<>();
         try {
             JSONArray fixtures = (JSONArray) thisObject.get("fixtures");
             System.out.println(fixtures);
-
-            ArrayList<Fixture> matches = new ArrayList<>();
 
             for (int i = 0 ; i < fixtures.length() ; i++){
                 JSONObject obj = fixtures.getJSONObject(i);
@@ -94,14 +97,20 @@ public class Parser extends AppCompatActivity{
                 String awayteamName = obj.get("awayTeamName").toString();
                 String matchday = obj.get("matchday").toString();
                 String date = obj.get("date").toString();
+//                System.out.println(hometeamName);
+//                System.out.println(awayteamName);
+//                System.out.println(matchday);
+//                System.out.println(date);
                 Fixture fixture = new Fixture(hometeamName,awayteamName,latLng,date,matchday);
+                System.out.println(fixture);
                 matches.add(fixture);
             }
-            return matches;
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        System.out.println("In Parser helper");
+        System.out.println(matches);
+        return matches;
     }
 
 }

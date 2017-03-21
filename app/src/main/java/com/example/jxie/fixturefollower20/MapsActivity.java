@@ -14,6 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -22,10 +24,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     int id = HomeActivity.id;
 
-    Parser parser;
+    Parser parser = new Parser();
 
     String location = HomeActivity.selection;
-    int tid = HomeActivity.id;
+
+    LatLng current = null;
 
     LatLng chelsea = new LatLng(51.4816, -0.191034);
     LatLng bournemouth = new LatLng(50.7352, -1.83839);
@@ -44,9 +47,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     LatLng watford = new LatLng(51.6498, -0.401569);
     LatLng westbrom = new LatLng(52.509, -1.96418);
     LatLng westham = new LatLng(51.5383, -0.016587);
-    
 
-    
     public LatLng getLocation(String selectedItem){
         LatLng cur = null;
         if(selectedItem.equals("Arsenal FC"))
@@ -119,31 +120,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             cur = westham;
         }
-        return cur; 
+        return cur;
     }
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        current = getLocation(location);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         mSpinner = (Spinner)findViewById(R.id.spinner);
         mSpinner.setEnabled(true);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.matchdays, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
 
-//        mSpinner.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                selection = mSpinner.getSelectedItem().toString();
-//
-//            }
-//        });
     }
 
 //
@@ -161,14 +157,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng current = getLocation(location);
-        parser.Parse(id,current);
         // Add a marker in Sydney and move the camera
-        mMap.addMarker(new MarkerOptions().position(current).title(location.toString()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
+//        mMap.addMarker(new MarkerOptions().position(current).title(location));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
+//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
+        parser.Parse(id, current, new CallBack() {
+            @Override
+            public void OnSuccess(ArrayList<Fixture> fixtures) {
+                System.out.println("success!!");
+                System.out.println(fixtures);
+                for(Fixture fixture: fixtures ){
+                    mMap.addMarker(new MarkerOptions().position(fixture.latlng).title(fixture.homeTeamName + fixture.awayTeamName));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current,6));
+                }
+            }
+            @Override
+            public void OnFail(String msg) {
+                System.out.println(msg);
+
+            }
+        });
+
+
+
     }
 }
